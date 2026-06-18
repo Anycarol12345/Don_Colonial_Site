@@ -1,0 +1,15 @@
+node_modules/
+dist/
+
+public/images/catalogo-fotos/
+public/images/catalogo-pdf/
+public/images/catalogo-fotos-preview.jpg
+public/images/catalogo-produtos/_preview-extracted.jpg
+public/images/catalogo-produtos/pdf-*.png
+public/images/catalogo-produtos/*.png
+
+public/images/hero-pao-de-queijo.png
+public/images/pao-de-queijo-bowl.png
+public/images/pao-de-queijo-close.png
+public/images/pao-de-queijo-tabua.png
+public/images/produto-tradicional.png
