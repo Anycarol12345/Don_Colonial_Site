@@ -1,7 +1,7 @@
 import { ArrowRight, BadgeCheck, ChevronLeft, ChevronRight, HeartHandshake, PackageCheck, Snowflake } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProductBand from '../components/ProductBand.jsx';
+import ProductBand from '../features/products/ProductBand.jsx';
 import { contacts } from '../data/contacts.js';
 import { featuredProducts } from '../data/products.js';
 
