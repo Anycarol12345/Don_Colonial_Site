@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
+import ScrollToTop from '../components/ScrollToTop.jsx';
 import WhatsAppButton from '../components/WhatsAppButton.jsx';
 import Contato from '../pages/Contato.jsx';
 import Empresa from '../pages/Empresa.jsx';
@@ -12,6 +13,7 @@ import Revendedores from '../pages/Revendedores.jsx';
 export default function App() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>

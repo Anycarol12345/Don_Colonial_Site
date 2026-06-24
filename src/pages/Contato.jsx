@@ -1,4 +1,5 @@
 import { AtSign, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import LeafletMap from '../components/LeafletMap.jsx';
 import PageHero from '../components/PageHero.jsx';
 import { contacts } from '../data/contacts.js';
 
@@ -79,6 +80,28 @@ export default function Contato() {
               Enviar pelo WhatsApp
             </a>
           </form>
+        </div>
+      </section>
+
+      <section className="section pt-0">
+        <div className="container">
+          <div className="section-heading">
+            <p className="section-eyebrow">Localização</p>
+            <h2>Onde fica a fábrica.</h2>
+          </div>
+          <LeafletMap
+            center={[contacts.lat, contacts.lng]}
+            zoom={15}
+            markers={[
+              {
+                id: 'fabrica',
+                lat: contacts.lat,
+                lng: contacts.lng,
+                title: 'Don Colonial',
+                popup: contacts.address,
+              },
+            ]}
+          />
         </div>
       </section>
     </>

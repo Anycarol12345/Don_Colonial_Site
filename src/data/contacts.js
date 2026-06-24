@@ -8,4 +8,6 @@ export const contacts = {
   instagram: '@doncolonial.oficial',
   instagramUrl: 'https://www.instagram.com/doncolonial.oficial',
   website: 'www.doncolonial.com.br',
+  lat: -23.4659622,
+  lng: -51.914174,
 };

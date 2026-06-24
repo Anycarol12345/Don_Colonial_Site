@@ -82,23 +82,25 @@ export default function Home() {
     <>
       <section className="relative overflow-hidden bg-[var(--color-bg-alt)]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(238,112,32,0.18),transparent_38%)]" />
-        <div className="container relative grid min-h-[calc(100vh-88px)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="container relative grid min-h-[calc(100vh-88px)] items-center gap-10 py-12 sm:gap-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <p className="section-eyebrow">{slide.eyebrow}</p>
-            <h1 className="mt-4 text-5xl font-black leading-tight tracking-tight text-[var(--color-dark)] sm:text-6xl">
-              {slide.title}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-muted)]">
-              {slide.text}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to={slide.cta.to} className="btn-primary">
-                {slide.cta.label}
-                <ArrowRight size={18} />
-              </Link>
-              <a href={contacts.whatsappLink} target="_blank" rel="noreferrer" className="btn-secondary">
-                Falar no WhatsApp
-              </a>
+            <div key={activeSlide} className="hero-fade">
+              <p className="section-eyebrow">{slide.eyebrow}</p>
+              <h1 className="mt-4 text-4xl font-black leading-tight tracking-tight text-[var(--color-dark)] sm:text-5xl lg:text-6xl">
+                {slide.title}
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-muted)]">
+                {slide.text}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to={slide.cta.to} className="btn-primary">
+                  {slide.cta.label}
+                  <ArrowRight size={18} />
+                </Link>
+                <a href={contacts.whatsappLink} target="_blank" rel="noreferrer" className="btn-secondary">
+                  Falar no WhatsApp
+                </a>
+              </div>
             </div>
             <div className="mt-8 flex items-center gap-3">
               <button
@@ -136,11 +138,12 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[var(--color-primary)]/15" />
             <img
+              key={activeSlide}
               src={slide.image}
               alt={slide.alt}
-              className="relative h-[560px] w-full rounded-[1.25rem] bg-[#2b241f] object-contain shadow-2xl shadow-black/15"
+              className="hero-fade relative h-[340px] w-full rounded-[1.25rem] bg-[#2b241f] object-contain shadow-2xl shadow-black/15 sm:h-[460px] lg:h-[560px]"
             />
-            <div className="absolute -bottom-6 left-6 max-w-xs rounded-xl bg-white p-5 shadow-xl shadow-black/10">
+            <div className="absolute -bottom-6 left-4 right-4 rounded-xl bg-white p-5 shadow-xl shadow-black/10 sm:right-auto sm:left-6 sm:max-w-xs">
               <strong className="text-[var(--color-dark)]">{slide.highlight}</strong>
               <p className="mt-2 text-sm text-[var(--color-muted)]">
                 Confira sabores, embalagens e canais de atendimento.
