@@ -9,7 +9,7 @@ const productSections = [
         name: 'Tradicional',
         color: '#826F62',
         description: 'O clássico mineiro que conquista corações! Casquinha crocante e sabor marcante de queijo.',
-        image: '/images/catalogo-produtos/produto-tradicional.png',
+        image: '/images/catalogo-produtos/produto-tradicional.jpg',
         packages: [
           { label: 'Embalagens de 1kg e 2kg', sizes: '15g | 25g | 50g | 60g | 80g | 90g | 120g' },
           { label: 'Embalagem 400g', sizes: '25g' },
@@ -25,7 +25,7 @@ const productSections = [
         name: 'Quatro Queijos',
         color: '#C1A684',
         description: 'Para quem ama queijo de verdade! Uma mistura irresistível de sabores marcantes.',
-        image: '/images/catalogo-produtos/produto-quatro-queijos.png',
+        image: '/images/catalogo-produtos/produto-quatro-queijos.jpg',
         packages: [
           { label: 'Embalagem de 1kg', sizes: '25g | 50g | 80g' },
           { label: 'Embalagem 400g', sizes: '25g' },
@@ -47,7 +47,7 @@ const productSections = [
         name: 'Recheado com Frango',
         color: '#137c35',
         description: 'Crocante por fora e por dentro um delicioso recheio de frango!',
-        image: '/images/catalogo-produtos/produto-recheado-frango.png',
+        image: '/images/catalogo-produtos/produto-recheado.jpg',
         packages: [{ label: 'Embalagens de', sizes: '800g e 2kg' }],
         specs: [
           'Queijos: Meia Cura e Parmesão',
@@ -60,7 +60,7 @@ const productSections = [
         name: 'Recheado com Goiabada',
         color: '#980018',
         description: 'Crocante por fora e por dentro um delicioso recheio de goiabada!',
-        image: '/images/catalogo-produtos/produto-recheado-goiabada.png',
+        image: '/images/catalogo-produtos/produto-recheado.jpg',
         packages: [{ label: 'Embalagens de', sizes: '800g e 2kg' }],
         specs: [
           'Queijos: Meia Cura e Parmesão',
@@ -73,7 +73,7 @@ const productSections = [
         name: 'Recheado com Requeijão',
         color: '#393F52',
         description: 'Crocante por fora e por dentro um delicioso recheio de requeijão!',
-        image: '/images/catalogo-produtos/produto-recheado-requeijao.png',
+        image: '/images/catalogo-produtos/produto-recheado.jpg',
         packages: [{ label: 'Embalagens de', sizes: '800g e 2kg' }],
         specs: [
           'Queijos: Meia Cura e Parmesão',
@@ -86,7 +86,7 @@ const productSections = [
         name: 'Recheado com Calabresa',
         color: '#B44E44',
         description: 'Crocante por fora e por dentro um delicioso recheio de calabresa!',
-        image: '/images/catalogo-produtos/produto-recheado-calabresa.png',
+        image: '/images/catalogo-produtos/produto-recheado.jpg',
         packages: [{ label: 'Embalagens de', sizes: '800g e 2kg' }],
         specs: [
           'Queijos: Meia Cura e Parmesão',
@@ -99,7 +99,7 @@ const productSections = [
         name: 'Recheado com Doce de Leite',
         color: '#9B723A',
         description: 'Crocante por fora e por dentro um delicioso recheio de doce de leite!',
-        image: '/images/catalogo-produtos/produto-recheado-doce-leite.png',
+        image: '/images/catalogo-produtos/produto-recheado.jpg',
         packages: [{ label: 'Embalagens de', sizes: '800g e 2kg' }],
         specs: [
           'Queijos: Meia Cura e Parmesão',
@@ -117,7 +117,7 @@ const productSections = [
       {
         name: 'Tradicional',
         description: 'Preparado com os melhores ingredientes, Ingá Pão de Queijo para você e sua família.',
-        image: '/images/catalogo-produtos/produto-inga.png',
+        image: '/images/catalogo-produtos/produto-inga.jpg',
         packages: [{ label: 'Embalagem 1kg', sizes: '15g | 25g | 50g | 60g | 80g | 90g | 120g' }],
         specs: ['Produto congelado', 'Linha familiar', 'Prático para assar'],
       },

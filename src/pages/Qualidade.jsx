@@ -51,7 +51,7 @@ export default function Qualidade() {
       <section className="section bg-[var(--color-bg-alt)]">
         <div className="container grid items-center gap-10 md:grid-cols-2">
           <img
-            src="/images/catalogo-produtos/produto-tradicional.png"
+            src="/images/catalogo-produtos/produto-tradicional.jpg"
             alt="Pão de queijo tradicional Don Colonial"
             className="h-[420px] w-full rounded-xl bg-[var(--color-dark)] object-contain shadow-xl"
           />

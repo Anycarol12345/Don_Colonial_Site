@@ -6,7 +6,7 @@ export const products = [
     tagline: 'O clássico mineiro que conquista corações.',
     description:
       'Casquinha crocante, massa macia e sabor marcante de queijo para qualquer momento do dia.',
-    image: '/images/catalogo-produtos/produto-tradicional.png',
+    image: '/images/catalogo-produtos/produto-tradicional.jpg',
     queijos: ['Meia Cura', 'Muçarela'],
     caracteristicas: ['Sem essência', 'Sem conservante', 'Sem saborizante', 'Sem corante'],
     textura: 'Crocante por fora | Macio por dentro',
@@ -23,7 +23,7 @@ export const products = [
     tagline: 'Para quem ama queijo de verdade.',
     description:
       'Uma combinação intensa de queijos selecionados, com textura leve e sabor mais marcante.',
-    image: '/images/catalogo-produtos/produto-quatro-queijos.png',
+    image: '/images/catalogo-produtos/produto-quatro-queijos.jpg',
     queijos: ['Meia Cura', 'Muçarela', 'Provolone', 'Gorgonzola'],
     caracteristicas: ['Sem essência', 'Sem conservante', 'Sem saborizante', 'Sem corante'],
     textura: 'Crocante por fora | Macio por dentro',
@@ -40,7 +40,7 @@ export const products = [
     tagline: 'Crocante por fora e recheado por dentro.',
     description:
       'Opções doces e salgadas para ampliar o cardápio com praticidade, rendimento e muito sabor.',
-    image: '/images/catalogo-produtos/produto-recheado-frango.png',
+    image: '/images/catalogo-produtos/produto-recheado.jpg',
     queijos: ['Meia Cura', 'Parmesão'],
     caracteristicas: ['Sem essência', 'Sem conservante', 'Sem saborizante', 'Sem corante'],
     textura: 'Crocante por fora | Recheado por dentro',
@@ -61,7 +61,7 @@ export const products = [
     tagline: 'Preparado para você e sua família.',
     description:
       'Linha tradicional Ingá, feita com bons ingredientes e pensada para consumo diário.',
-    image: '/images/catalogo-produtos/produto-inga.png',
+    image: '/images/catalogo-produtos/produto-inga.jpg',
     queijos: [],
     caracteristicas: ['Congelado', 'Prático para assar', 'Linha familiar'],
     textura: 'Macio por dentro',
