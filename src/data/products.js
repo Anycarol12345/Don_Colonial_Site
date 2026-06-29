@@ -6,7 +6,7 @@ export const products = [
     tagline: 'O clássico mineiro que conquista corações.',
     description:
       'Casquinha crocante, massa macia e sabor marcante de queijo para qualquer momento do dia.',
-    image: '/images/catalogo-produtos/produto-tradicional.jpg',
+    image: '/images/catalogo-produtos/produto-tradicional.png',
     queijos: ['Meia Cura', 'Muçarela'],
     caracteristicas: ['Sem essência', 'Sem conservante', 'Sem saborizante', 'Sem corante'],
     textura: 'Crocante por fora | Macio por dentro',
@@ -23,7 +23,7 @@ export const products = [
     tagline: 'Para quem ama queijo de verdade.',
     description:
       'Uma combinação intensa de queijos selecionados, com textura leve e sabor mais marcante.',
-    image: '/images/catalogo-produtos/produto-quatro-queijos.jpg',
+    image: '/images/catalogo-produtos/produto-quatro-queijos.png',
     queijos: ['Meia Cura', 'Muçarela', 'Provolone', 'Gorgonzola'],
     caracteristicas: ['Sem essência', 'Sem conservante', 'Sem saborizante', 'Sem corante'],
     textura: 'Crocante por fora | Macio por dentro',
@@ -61,7 +61,7 @@ export const products = [
     tagline: 'Preparado para você e sua família.',
     description:
       'Linha tradicional Ingá, feita com bons ingredientes e pensada para consumo diário.',
-    image: '/images/catalogo-produtos/produto-inga.jpg',
+    image: '/images/catalogo-produtos/produto-inga.png',
     queijos: [],
     caracteristicas: ['Congelado', 'Prático para assar', 'Linha familiar'],
     textura: 'Macio por dentro',

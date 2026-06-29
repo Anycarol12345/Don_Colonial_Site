@@ -1,5 +1,5 @@
 import { ArrowRight, BadgeCheck, ChevronLeft, ChevronRight, HeartHandshake, PackageCheck, Snowflake } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductBand from '../features/products/ProductBand.jsx';
 import { contacts } from '../data/contacts.js';
@@ -28,12 +28,38 @@ const features = [
   },
 ];
 
+const flavorLines = [
+  {
+    line: 'Tradicional',
+    items: [
+      { name: 'Tradicional', image: '/images/catalogo-produtos/produto-tradicional.png', color: '#826F62' },
+      { name: 'Quatro Queijos', image: '/images/catalogo-produtos/produto-quatro-queijos.png', color: '#C1A684' },
+    ],
+  },
+  {
+    line: 'Recheados',
+    items: [
+      { name: 'Frango', image: '/images/catalogo-produtos/produto-recheado-frango.png', color: '#137c35' },
+      { name: 'Goiabada', image: '/images/catalogo-produtos/produto-recheado-goiabada.png', color: '#980018' },
+      { name: 'Requeijão', image: '/images/catalogo-produtos/produto-recheado-requeijao.png', color: '#393F52' },
+      { name: 'Calabresa', image: '/images/catalogo-produtos/produto-recheado-calabresa.png', color: '#B44E44' },
+      { name: 'Doce de Leite', image: '/images/catalogo-produtos/produto-recheado-doce-leite.png', color: '#9B723A' },
+    ],
+  },
+  {
+    line: 'Ingá',
+    items: [
+      { name: 'Tradicional', image: '/images/catalogo-produtos/produto-inga.png', color: '#12a4d6' },
+    ],
+  },
+];
+
 const heroSlides = [
   {
     eyebrow: 'O verdadeiro pão de queijo',
     title: 'Preparado com amor e muito queijo.',
     text: 'Receita inspirada na tradição mineira, com massa leve e sabor de queijo de verdade.',
-    image: '/images/catalogo-produtos/hero-catalogo.jpg',
+    image: '/images/hero-pao-de-queijo.png',
     alt: 'Pão de queijo Don Colonial em cesta',
     highlight: 'Receita tradicional mineira',
     cta: { to: '/produtos', label: 'Ver produtos' },
@@ -42,7 +68,7 @@ const heroSlides = [
     eyebrow: 'Qualidade acima de tudo',
     title: 'Massa leve, saborosa e pronta para assar.',
     text: 'Do freezer para o forno, para servir quentinho quando bater vontade.',
-    image: '/images/catalogo-produtos/produto-tradicional.jpg',
+    image: '/images/pao-de-queijo-tabua.png',
     alt: 'Produto tradicional Don Colonial',
     highlight: 'Congelado, prático e gostoso',
     cta: { to: '/qualidade', label: 'Conhecer qualidade' },
@@ -51,7 +77,7 @@ const heroSlides = [
     eyebrow: 'Seja um revendedor',
     title: 'Leve Don Colonial para sua região.',
     text: 'Converse com a equipe e veja como trabalhar com os produtos Don Colonial.',
-    image: '/images/catalogo-produtos/produto-recheado.jpg',
+    image: '/images/pao-de-queijo-bowl.png',
     alt: 'Linha de produtos recheados Don Colonial',
     highlight: 'Excelente oportunidade de lucro',
     cta: { to: '/revendedores', label: 'Conhecer revenda' },
@@ -60,27 +86,70 @@ const heroSlides = [
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const slide = heroSlides[activeSlide];
+  const dragStartX = useRef(null);
 
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 6000);
-
-    return () => window.clearInterval(intervalId);
+  const previousSlide = useCallback(() => {
+    setActiveSlide((current) => (current === 0 ? heroSlides.length - 1 : current - 1));
   }, []);
 
-  const previousSlide = () => {
-    setActiveSlide((current) => (current === 0 ? heroSlides.length - 1 : current - 1));
+  const nextSlide = useCallback(() => {
+    setActiveSlide((current) => (current + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return undefined;
+
+    const intervalId = window.setInterval(nextSlide, 6000);
+    return () => window.clearInterval(intervalId);
+  }, [isPaused, nextSlide]);
+
+  const handlePointerDown = (event) => {
+    dragStartX.current = event.clientX;
   };
 
-  const nextSlide = () => {
-    setActiveSlide((current) => (current + 1) % heroSlides.length);
+  const handlePointerUp = (event) => {
+    if (dragStartX.current === null) return;
+
+    const deltaX = event.clientX - dragStartX.current;
+    dragStartX.current = null;
+
+    if (Math.abs(deltaX) < 50) return;
+    if (deltaX < 0) {
+      nextSlide();
+    } else {
+      previousSlide();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowLeft') {
+      previousSlide();
+    } else if (event.key === 'ArrowRight') {
+      nextSlide();
+    }
   };
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[var(--color-bg-alt)]">
+      <section
+        className="relative overflow-hidden bg-[var(--color-bg-alt)]"
+        role="region"
+        aria-roledescription="carrossel"
+        aria-label="Destaques Don Colonial"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
+        onKeyDown={handleKeyDown}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={() => {
+          dragStartX.current = null;
+        }}
+        style={{ touchAction: 'pan-y' }}
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(238,112,32,0.18),transparent_38%)]" />
         <div className="container relative grid min-h-[calc(100vh-88px)] items-center gap-10 py-12 sm:gap-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -190,12 +259,56 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
+          <div className="section-heading">
+            <p className="section-eyebrow">Vitrine de sabores</p>
+            <h2>Conheça os sabores por linha.</h2>
+          </div>
+          <div className="space-y-10">
+            {flavorLines.map((group) => (
+              <div key={group.line}>
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="h-3 w-3 rounded-sm bg-[var(--color-primary)]" />
+                  <h3 className="text-xl font-black text-[var(--color-dark)]">{group.line}</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                  {group.items.map((item) => (
+                    <Link
+                      key={`${group.line}-${item.name}`}
+                      to="/produtos"
+                      className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md shadow-black/5 transition hover:-translate-y-1 hover:shadow-xl"
+                    >
+                      <div
+                        className="flex h-44 items-center justify-center p-3 sm:h-48"
+                        style={{ backgroundColor: item.color }}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          loading="lazy"
+                          className="max-h-full w-auto object-contain transition group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between gap-2 p-4">
+                        <span className="font-bold text-[var(--color-dark)]">{item.name}</span>
+                        <ArrowRight size={18} className="shrink-0 text-[var(--color-primary)]" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
           <div className="overflow-hidden rounded-xl bg-[var(--color-dark)] p-8 text-white shadow-xl shadow-black/10 md:p-12">
-            <div className="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr]">
+            <div className="grid items-center gap-6 md:grid-cols-[1.4fr_auto] md:justify-between">
               <div>
                 <p className="section-eyebrow text-white/70">Seja um revendedor</p>
                 <h2 className="mt-3 text-3xl font-black md:text-4xl">Quer vender Don Colonial?</h2>
-                <p className="mt-4 max-w-2xl leading-7 text-white/75">
+                <p className="mt-4 max-w-xl leading-7 text-white/75">
                   Chame a equipe e fale sobre sua cidade, seu ponto de venda e a linha ideal para começar.
                 </p>
               </div>
