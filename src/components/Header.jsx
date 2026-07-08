@@ -8,7 +8,7 @@ const navItems = [
   { to: '/empresa', label: 'Empresa' },
   { to: '/produtos', label: 'Produtos' },
   { to: '/qualidade', label: 'Qualidade' },
-  { to: '/revendedores', label: 'Revendedores' },
+  { to: '/distribuidores', label: 'Distribuidores' },
   { to: '/contato', label: 'Contato' },
 ];
 

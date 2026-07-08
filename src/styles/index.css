@@ -168,3 +168,44 @@ a {
     animation: none;
   }
 }
+
+/* Leaflet — realces e detalhes */
+.leaflet-container {
+  font: inherit;
+  background: #1b2530;
+}
+
+.leaflet-container .leaflet-tooltip.city-tooltip {
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-dark);
+  padding: 0.2rem 0.6rem;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
+}
+
+.leaflet-container .leaflet-tooltip.city-tooltip::before {
+  border-top-color: var(--color-dark);
+}
+
+.leaflet-container .leaflet-popup-content-wrapper {
+  border-radius: 0.85rem;
+  box-shadow: 0 18px 40px rgb(47 43 39 / 22%);
+}
+
+.leaflet-container .leaflet-popup-content {
+  margin: 0.85rem 1rem;
+  color: var(--color-dark);
+  line-height: 1.4;
+}
+
+.leaflet-container .leaflet-popup-content strong {
+  color: var(--color-primary-dark);
+}
+
+.leaflet-container .leaflet-bar a,
+.leaflet-container .leaflet-bar a:hover {
+  color: var(--color-dark);
+}

@@ -1,8 +1,10 @@
 import { BadgeCheck, Handshake, MapPin, Snowflake, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
+import LeafletMap from '../components/LeafletMap.jsx';
 import PageHero from '../components/PageHero.jsx';
 import { contacts } from '../data/contacts.js';
-import { regioesAtendidas, revendedores } from '../data/revendedores.js';
+import { cidadesAtendidas } from '../data/distribuidores.js';
+import { revendedores } from '../data/revendedores.js';
 
 const whatsappNumber = contacts.whatsappLink.match(/wa\.me\/(\d+)/)?.[1] ?? '';
 
@@ -37,7 +39,7 @@ const initialForm = {
   mensagem: '',
 };
 
-export default function Revendedores() {
+export default function Distribuidores() {
   const [form, setForm] = useState(initialForm);
 
   const handleChange = (event) => {
@@ -48,7 +50,7 @@ export default function Revendedores() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const text = [
-      'Olá, Don Colonial! Quero me tornar um revendedor.',
+      'Olá, Don Colonial! Quero me tornar um distribuidor.',
       '',
       `Nome: ${form.nome}`,
       `Estabelecimento: ${form.estabelecimento}`,
@@ -66,7 +68,7 @@ export default function Revendedores() {
   return (
     <>
       <PageHero
-        eyebrow="Revendedores"
+        eyebrow="Distribuidores"
         title="Venda Don Colonial na sua região."
         description="Fale com a equipe comercial e veja as opções para trabalhar com pão de queijo congelado."
       />
@@ -74,7 +76,7 @@ export default function Revendedores() {
       <section className="section">
         <div className="container grid items-start gap-10 lg:grid-cols-[1fr_1.05fr]">
           <div>
-            <p className="section-eyebrow">Torne-se um revendedor</p>
+            <p className="section-eyebrow">Torne-se um distribuidor</p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[var(--color-dark)] sm:text-4xl">
               Leve o pão de queijo Don Colonial para o seu balcão.
             </h2>
@@ -167,26 +169,57 @@ export default function Revendedores() {
 
       <section className="section pt-0">
         <div className="container">
-          <div className="overflow-hidden rounded-2xl bg-[var(--color-dark)] p-8 text-white shadow-xl shadow-black/10 md:p-10">
-            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="section-eyebrow text-white/70">Área de atuação</p>
-                <h2 className="mt-3 text-2xl font-black md:text-3xl">Atendimento a partir de Maringá/PR.</h2>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {regioesAtendidas.map((regiao) => (
-                    <span
-                      key={regiao}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85"
-                    >
-                      <MapPin className="shrink-0 text-[var(--color-primary)]" size={16} />
-                      {regiao}
-                    </span>
-                  ))}
-                </div>
+          <div className="section-heading">
+            <p className="section-eyebrow">Onde estamos</p>
+            <h2>Cidades atendidas no Paraná.</h2>
+            <p className="mt-4 leading-7 text-[var(--color-muted)]">
+              Distribuição e revenda de pão de queijo congelado nas principais cidades da região noroeste e norte do
+              estado, a partir de Maringá/PR.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
+            <LeafletMap
+              cities={cidadesAtendidas}
+              tile="dark"
+              fitToCities
+              height={520}
+              zoom={8}
+            />
+
+            <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-xl shadow-black/5">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-primary-soft)] text-[var(--color-primary)]">
+                  <MapPin size={18} />
+                </span>
+                <h3 className="text-lg font-black text-[var(--color-dark)]">
+                  {cidadesAtendidas.length} cidades atendidas
+                </h3>
               </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {cidadesAtendidas.map((cidade) => (
+                  <span
+                    key={cidade.nome}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold ${
+                      cidade.sede
+                        ? 'border-[var(--color-primary)] bg-[var(--color-primary-soft)] text-[var(--color-primary-dark)]'
+                        : 'border-black/10 bg-[var(--color-bg-alt)] text-[var(--color-dark)]'
+                    }`}
+                  >
+                    <span
+                      className={`h-2 w-2 rounded-full ${cidade.sede ? 'bg-[var(--color-primary-dark)]' : 'bg-[var(--color-primary)]'}`}
+                    />
+                    {cidade.nome}
+                    {cidade.sede ? ' · Sede' : ''}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-6 text-sm leading-6 text-[var(--color-muted)]">
+                Não encontrou sua cidade? Fale com a gente pelo WhatsApp e confirme a disponibilidade na sua região.
+              </p>
               <a
                 href={contacts.whatsappLink}
-                className="btn-primary shrink-0 justify-center"
+                className="btn-primary mt-4 w-full justify-center"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -200,7 +233,7 @@ export default function Revendedores() {
               <table className="w-full min-w-[720px] text-left text-sm">
                 <thead>
                   <tr className="border-b text-[var(--color-dark)]">
-                    <th className="py-3">Revendedor</th>
+                    <th className="py-3">Distribuidor</th>
                     <th className="py-3">Cidade</th>
                     <th className="py-3">Telefone</th>
                     <th className="py-3">Área de atuação</th>

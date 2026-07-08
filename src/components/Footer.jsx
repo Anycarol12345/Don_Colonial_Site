@@ -6,7 +6,7 @@ const quickLinks = [
   ['Produtos', '/produtos'],
   ['Sobre nós', '/empresa'],
   ['Qualidade', '/qualidade'],
-  ['Revendedores', '/revendedores'],
+  ['Distribuidores', '/distribuidores'],
   ['Contato', '/contato'],
 ];
 

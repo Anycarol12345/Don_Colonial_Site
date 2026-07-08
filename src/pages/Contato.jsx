@@ -1,7 +1,9 @@
-import { AtSign, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { AtSign, Mail, MapPin, MessageCircle, Navigation, Phone } from 'lucide-react';
 import LeafletMap from '../components/LeafletMap.jsx';
 import PageHero from '../components/PageHero.jsx';
 import { contacts } from '../data/contacts.js';
+
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contacts.address)}`;
 
 const contactCards = [
   { icon: Phone, label: 'Telefone', value: contacts.phone, href: `tel:${contacts.phone.replace(/\D/g, '')}` },
@@ -16,7 +18,7 @@ export default function Contato() {
       <PageHero
         eyebrow="Contato"
         title="Fale com a Don Colonial."
-        description="Tire dúvidas, peça informações sobre produtos ou converse sobre revenda."
+        description="Tire dúvidas, peça informações sobre produtos ou converse sobre distribuição."
       />
 
       <section className="section">
@@ -62,7 +64,7 @@ export default function Contato() {
                 Assunto
                 <select className="input">
                   <option>Informações sobre produtos</option>
-                  <option>Seja um revendedor</option>
+                  <option>Seja um distribuidor</option>
                   <option>Dúvidas gerais</option>
                   <option>Sugestões</option>
                   <option>Outros</option>
@@ -89,19 +91,31 @@ export default function Contato() {
             <p className="section-eyebrow">Localização</p>
             <h2>Onde fica a fábrica.</h2>
           </div>
-          <LeafletMap
-            center={[contacts.lat, contacts.lng]}
-            zoom={15}
-            markers={[
-              {
-                id: 'fabrica',
-                lat: contacts.lat,
-                lng: contacts.lng,
-                title: 'Don Colonial',
-                popup: contacts.address,
-              },
-            ]}
-          />
+          <div className="relative">
+            <LeafletMap
+              center={[contacts.lat, contacts.lng]}
+              zoom={15}
+              markers={[
+                {
+                  id: 'fabrica',
+                  lat: contacts.lat,
+                  lng: contacts.lng,
+                  title: 'Don Colonial',
+                  popup: contacts.address,
+                  radiusKm: 0.9,
+                },
+              ]}
+            />
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-4 left-4 z-[500] inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-bold text-[var(--color-dark)] shadow-lg shadow-black/20 ring-1 ring-black/10 backdrop-blur transition hover:-translate-y-0.5 hover:text-[var(--color-primary-dark)]"
+            >
+              <Navigation size={16} className="text-[var(--color-primary)]" />
+              Como chegar
+            </a>
+          </div>
         </div>
       </section>
     </>

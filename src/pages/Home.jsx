@@ -72,13 +72,13 @@ const heroSlides = [
     cta: { to: '/qualidade', label: 'Conhecer qualidade' },
   },
   {
-    eyebrow: 'Seja um revendedor',
+    eyebrow: 'Seja um distribuidor',
     title: 'Leve Don Colonial para sua região.',
     text: 'Converse com a equipe e veja como trabalhar com os produtos Don Colonial.',
     image: '/images/pao-de-queijo-bowl.png',
     alt: 'Linha de produtos recheados Don Colonial',
     highlight: 'Excelente oportunidade de lucro',
-    cta: { to: '/revendedores', label: 'Conhecer revenda' },
+    cta: { to: '/distribuidores', label: 'Conhecer distribuição' },
   },
 ];
 
@@ -315,14 +315,14 @@ export default function Home() {
           <div className="overflow-hidden rounded-xl bg-[var(--color-dark)] p-8 text-white shadow-xl shadow-black/10 md:p-12">
             <div className="grid items-center gap-6 md:grid-cols-[1.4fr_auto] md:justify-between">
               <div>
-                <p className="section-eyebrow text-white/70">Seja um revendedor</p>
+                <p className="section-eyebrow text-white/70">Seja um distribuidor</p>
                 <h2 className="mt-3 text-3xl font-black md:text-4xl">Quer vender Don Colonial?</h2>
                 <p className="mt-4 max-w-xl leading-7 text-white/75">
                   Chame a equipe e fale sobre sua cidade, seu ponto de venda e a linha ideal para começar.
                 </p>
               </div>
-              <Link to="/revendedores" className="btn-primary justify-center">
-                Conhecer revenda
+              <Link to="/distribuidores" className="btn-primary justify-center">
+                Conhecer distribuição
                 <ArrowRight size={18} />
               </Link>
             </div>

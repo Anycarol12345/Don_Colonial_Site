@@ -8,7 +8,7 @@ import Empresa from '../pages/Empresa.jsx';
 import Home from '../pages/Home.jsx';
 import Produtos from '../pages/Produtos.jsx';
 import Qualidade from '../pages/Qualidade.jsx';
-import Revendedores from '../pages/Revendedores.jsx';
+import Distribuidores from '../pages/Distribuidores.jsx';
 
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/empresa" element={<Empresa />} />
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/qualidade" element={<Qualidade />} />
-          <Route path="/revendedores" element={<Revendedores />} />
+          <Route path="/distribuidores" element={<Distribuidores />} />
           <Route path="/contato" element={<Contato />} />
         </Routes>
       </main>

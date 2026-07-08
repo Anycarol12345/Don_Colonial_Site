@@ -1,0 +1,18 @@
+export const cidadesAtendidas = [
+  { nome: 'Maringá', lat: -23.4205, lng: -51.9331, sede: true },
+  { nome: 'Sarandi', lat: -23.4436, lng: -51.8747 },
+  { nome: 'Paiçandu', lat: -23.4574, lng: -52.0481 },
+  { nome: 'Marialva', lat: -23.4855, lng: -51.7925 },
+  { nome: 'Mandaguari', lat: -23.547, lng: -51.6708 },
+  { nome: 'Iguaraçu', lat: -23.1958, lng: -51.8264 },
+  { nome: 'Astorga', lat: -23.2325, lng: -51.6656 },
+  { nome: 'Arapongas', lat: -23.4194, lng: -51.4244 },
+  { nome: 'Apucarana', lat: -23.5505, lng: -51.4616 },
+  { nome: 'Cambira', lat: -23.5919, lng: -51.5794 },
+  { nome: 'Londrina', lat: -23.3045, lng: -51.1696 },
+  { nome: 'Campo Mourão', lat: -24.0463, lng: -52.3831 },
+  { nome: 'Cianorte', lat: -23.6635, lng: -52.6053 },
+  { nome: 'Tapejara', lat: -23.7367, lng: -52.8722 },
+  { nome: 'Umuarama', lat: -23.7661, lng: -53.3206 },
+  { nome: 'Paranavaí', lat: -23.0731, lng: -52.465 },
+];
