@@ -1,9 +1,7 @@
 import { ArrowRight, BadgeCheck, ChevronLeft, ChevronRight, HeartHandshake, PackageCheck, Snowflake } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProductBand from '../features/products/ProductBand.jsx';
 import { contacts } from '../data/contacts.js';
-import { featuredProducts } from '../data/products.js';
 
 const features = [
   {
@@ -222,7 +220,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section py-12! md:py-16!">
         <div className="container">
           <div className="section-heading">
             <p className="section-eyebrow">Diferenciais</p>
@@ -243,21 +241,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-[var(--color-bg-alt)]">
+      <section className="section py-12! md:py-16!">
         <div className="container">
-          <div className="section-heading">
-            <p className="section-eyebrow">Produtos em destaque</p>
-            <h2>Escolha pelo sabor, pelo tamanho ou pela ocasião.</h2>
-          </div>
-          <div className="space-y-8">
-            {featuredProducts.map((product, index) => (
-              <ProductBand key={product.id} product={product} reverse={index % 2 === 1} />
-            ))}
+          <div className="flex flex-col items-start gap-6 rounded-xl border border-black/5 bg-[var(--color-primary-soft)] p-8 md:flex-row md:items-center md:justify-between md:p-10">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--color-primary)] shadow-sm">
+                <Snowflake size={24} />
+              </span>
+              <div>
+                <p className="section-eyebrow">Qualidade</p>
+                <h2 className="mt-2 text-2xl font-black text-[var(--color-dark)] md:text-3xl">
+                  Do freezer ao forno, sem abrir mão do sabor.
+                </h2>
+                <p className="mt-3 max-w-xl leading-7 text-[var(--color-muted)]">
+                  Ingredientes escolhidos com cuidado e informação clara de sabores, tamanhos e glúten.
+                </p>
+              </div>
+            </div>
+            <Link to="/qualidade" className="btn-primary shrink-0 justify-center">
+              Conhecer qualidade
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section py-12! md:py-16!">
         <div className="container">
           <div className="section-heading">
             <p className="section-eyebrow">Vitrine de sabores</p>
@@ -301,7 +310,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section py-12! md:py-16!">
         <div className="container">
           <div className="overflow-hidden rounded-xl bg-[var(--color-dark)] p-8 text-white shadow-xl shadow-black/10 md:p-12">
             <div className="grid items-center gap-6 md:grid-cols-[1.4fr_auto] md:justify-between">
