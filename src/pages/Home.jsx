@@ -57,8 +57,8 @@ const heroSlides = [
     eyebrow: 'O verdadeiro pão de queijo',
     title: 'Preparado com amor e muito queijo.',
     text: 'Receita inspirada na tradição mineira, com massa leve e sabor de queijo de verdade.',
-    image: '/images/hero-pao-de-queijo.png',
-    alt: 'Pão de queijo Don Colonial em cesta',
+    image: '/images/hero-cesta.png',
+    alt: 'Pão de queijo Don Colonial em cesta com guardanapo xadrez',
     highlight: 'Receita tradicional mineira',
     cta: { to: '/produtos', label: 'Ver produtos' },
   },
@@ -66,8 +66,8 @@ const heroSlides = [
     eyebrow: 'Qualidade acima de tudo',
     title: 'Massa leve, saborosa e pronta para assar.',
     text: 'Do freezer para o forno, para servir quentinho quando bater vontade.',
-    image: '/images/pao-de-queijo-tabua.png',
-    alt: 'Produto tradicional Don Colonial',
+    image: '/images/hero-tigela.png',
+    alt: 'Pão de queijo Don Colonial em tigela branca à luz da janela',
     highlight: 'Congelado, prático e gostoso',
     cta: { to: '/qualidade', label: 'Conhecer qualidade' },
   },
@@ -208,7 +208,7 @@ export default function Home() {
               key={activeSlide}
               src={slide.image}
               alt={slide.alt}
-              className="hero-fade relative h-[340px] w-full rounded-[1.25rem] bg-[#2b241f] object-contain shadow-2xl shadow-black/15 sm:h-[460px] lg:h-[560px]"
+              className="hero-fade relative h-[340px] w-full rounded-[1.25rem] bg-[#2b241f] object-cover shadow-2xl shadow-black/15 sm:h-[460px] lg:h-[560px]"
             />
             <div className="absolute -bottom-6 left-4 right-4 rounded-xl bg-white p-5 shadow-xl shadow-black/10 sm:right-auto sm:left-6 sm:max-w-xs">
               <strong className="text-[var(--color-dark)]">{slide.highlight}</strong>
