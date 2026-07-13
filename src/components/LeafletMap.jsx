@@ -74,7 +74,7 @@ export default function LeafletMap({
                 <Circle
                   center={position}
                   radius={marker.radiusKm * 1000}
-                  pathOptions={{ color: '#ee7020', fillColor: '#ee7020', fillOpacity: 0.12 }}
+                  pathOptions={{ color: '#d0750e', fillColor: '#d0750e', fillOpacity: 0.12 }}
                 />
               ) : null}
               <Marker position={position}>
@@ -98,9 +98,9 @@ export default function LeafletMap({
                   center={position}
                   radius={18}
                   pathOptions={{
-                    color: '#ee7020',
+                    color: '#d0750e',
                     weight: 1,
-                    fillColor: '#ee7020',
+                    fillColor: '#d0750e',
                     fillOpacity: 0.15,
                   }}
                 />
@@ -111,7 +111,7 @@ export default function LeafletMap({
                 pathOptions={{
                   color: '#ffffff',
                   weight: 2,
-                  fillColor: city.sede ? '#b94e12' : '#ee7020',
+                  fillColor: city.sede ? '#23140e' : '#d0750e',
                   fillOpacity: 0.95,
                 }}
               >
