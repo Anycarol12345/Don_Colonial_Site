@@ -26,30 +26,11 @@ const features = [
   },
 ];
 
-const flavorLines = [
-  {
-    line: 'Tradicional',
-    items: [
-      { name: 'Tradicional', image: '/images/catalogo-produtos/produto-tradicional.png', color: '#826F62' },
-      { name: 'Quatro Queijos', image: '/images/catalogo-produtos/produto-quatro-queijos.png', color: '#C1A684' },
-    ],
-  },
-  {
-    line: 'Recheados',
-    items: [
-      { name: 'Frango', image: '/images/catalogo-produtos/produto-recheado-frango.png', color: '#137c35' },
-      { name: 'Goiabada', image: '/images/catalogo-produtos/produto-recheado-goiabada.png', color: '#980018' },
-      { name: 'Requeijão', image: '/images/catalogo-produtos/produto-recheado-requeijao.png', color: '#393F52' },
-      { name: 'Calabresa', image: '/images/catalogo-produtos/produto-recheado-calabresa.png', color: '#B44E44' },
-      { name: 'Doce de Leite', image: '/images/catalogo-produtos/produto-recheado-doce-leite.png', color: '#9B723A' },
-    ],
-  },
-  {
-    line: 'Ingá',
-    items: [
-      { name: 'Tradicional', image: '/images/catalogo-produtos/produto-inga.png', color: '#12a4d6' },
-    ],
-  },
+const categories = [
+  { name: 'Tradicional', image: '/images/catalogo-produtos/produto-tradicional.png', color: '#826F62' },
+  { name: 'Quatro Queijos', image: '/images/catalogo-produtos/produto-quatro-queijos.png', color: '#C1A684' },
+  { name: 'Recheados', image: '/images/catalogo-produtos/produto-recheado-frango.png', color: '#137c35' },
+  { name: 'Ingá', image: '/images/catalogo-produtos/produto-inga.png', color: '#12a4d6' },
 ];
 
 const heroSlides = [
@@ -243,68 +224,33 @@ export default function Home() {
 
       <section className="section py-12! md:py-16!">
         <div className="container">
-          <div className="flex flex-col items-start gap-6 rounded-xl border border-black/5 bg-[var(--color-primary-soft)] p-8 md:flex-row md:items-center md:justify-between md:p-10">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--color-primary)] shadow-sm">
-                <Snowflake size={24} />
-              </span>
-              <div>
-                <p className="section-eyebrow">Qualidade</p>
-                <h2 className="mt-2 text-2xl font-black text-[var(--color-dark)] md:text-3xl">
-                  Do freezer ao forno, sem abrir mão do sabor.
-                </h2>
-                <p className="mt-3 max-w-xl leading-7 text-[var(--color-muted)]">
-                  Ingredientes escolhidos com cuidado e informação clara de sabores, tamanhos e glúten.
-                </p>
-              </div>
-            </div>
-            <Link to="/qualidade" className="btn-primary shrink-0 justify-center">
-              Conhecer qualidade
-              <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section py-12! md:py-16!">
-        <div className="container">
           <div className="section-heading">
             <p className="section-eyebrow">Vitrine de sabores</p>
-            <h2>Conheça os sabores por linha.</h2>
+            <h2>Conheça as quatro linhas.</h2>
           </div>
-          <div className="space-y-10">
-            {flavorLines.map((group) => (
-              <div key={group.line}>
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="h-3 w-3 rounded-sm bg-[var(--color-primary)]" />
-                  <h3 className="text-xl font-black text-[var(--color-dark)]">{group.line}</h3>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {categories.map((category) => (
+              <Link
+                key={category.name}
+                to="/produtos"
+                className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md shadow-black/5 transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div
+                  className="flex h-44 items-center justify-center p-3 sm:h-48"
+                  style={{ backgroundColor: category.color }}
+                >
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    loading="lazy"
+                    className="max-h-full w-auto object-contain transition group-hover:scale-105"
+                  />
                 </div>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                  {group.items.map((item) => (
-                    <Link
-                      key={`${group.line}-${item.name}`}
-                      to="/produtos"
-                      className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-md shadow-black/5 transition hover:-translate-y-1 hover:shadow-xl"
-                    >
-                      <div
-                        className="flex h-44 items-center justify-center p-3 sm:h-48"
-                        style={{ backgroundColor: item.color }}
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          loading="lazy"
-                          className="max-h-full w-auto object-contain transition group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between gap-2 p-4">
-                        <span className="font-bold text-[var(--color-dark)]">{item.name}</span>
-                        <ArrowRight size={18} className="shrink-0 text-[var(--color-primary)]" />
-                      </div>
-                    </Link>
-                  ))}
+                <div className="flex items-center justify-between gap-2 p-4">
+                  <span className="font-bold text-[var(--color-dark)]">{category.name}</span>
+                  <ArrowRight size={18} className="shrink-0 text-[var(--color-primary)]" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
